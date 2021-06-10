@@ -1,6 +1,6 @@
 const DATA = {
     employees: [
-        {id: 1, name: "Пафнутий", surname: "Пафнутьев", department: "IT"},
+        {id: 1, name: "Пафнутий", surname: "Пафнутьев", department: "IT", managerRef: 2},
         {id: 2, name: "Арсений", surname: "Иванов", department: "IT"},
         {id: 3, name: "Иван", surname: "Иванов", department: "IT"},
         {id: 4, name: "Антон", surname: "Петров", department: "IT"},

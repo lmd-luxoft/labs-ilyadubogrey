@@ -1,0 +1,79 @@
+@charset "UTF-8";
+.employees--item {
+  position: relative;
+  cursor: pointer;
+}
+
+.employees--item-edit {
+  position: absolute;
+  right: 40px;
+  top: 5px;
+  visibility: hidden;
+}
+
+.employees--item-delete {
+  position: absolute;
+  right: 5px;
+  top: 5px;
+  visibility: hidden;
+}
+
+.employees--item:hover {
+  background: #eee;
+}
+
+.employees--item:hover .employees--item-edit, .employees--item:hover .employees--item-delete {
+  visibility: visible;
+}
+
+.employees--item-select {
+  position: absolute;
+  top: 5px;
+  right: 75px;
+  width: 150px;
+  padding-top: .125rem;
+  padding-bottom: .125rem;
+  padding-left: .125rem;
+  padding-right: 1.25rem;
+  font-size: .7rem;
+  height: 31px;
+  background-position: right .5rem center;
+  background-size: 10px 8px;
+  visibility: hidden;
+}
+
+.employees--item-manager {
+  display: block;
+  position: absolute;
+  right: 75px;
+  height: 38px;
+  width: 150px;
+  top: 5px;
+  line-height: 40px;
+  overflow: hidden;
+  font-size: .7rem;
+}
+
+.employees--item:hover .employees--item-select {
+  visibility: visible;
+}
+
+.employees--item-manager::before {
+  content: 'менеджер:';
+  display: block;
+  position: absolute;
+  font-size: .6rem;
+  top: -0.85rem;
+  left: 0px;
+}
+
+.navbar > .container-fluid {
+  -webkit-box-pack: left;
+      -ms-flex-pack: left;
+          justify-content: left;
+}
+
+.navbar > .container-fluid .btn {
+  margin-right: 5px;
+}
+/*# sourceMappingURL=master.css.map */

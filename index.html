@@ -7,19 +7,24 @@
     <title>Laba</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <link href="master.css" rel="stylesheet">
 </head>
 <body>
 
     <main>
         <div class="container pt-5 pb-5">
             <div class="row">
-                <div class="col-12 col-sm-6 col-md-5 col-lg-4">
+                <div class="col-12 col-sm-6 col-md-6 col-lg-6">
                     <div id="employeesPlaceholder"></div>
                 </div>
-                <div class="col-12 col-sm-6 col-md-7 col-lg-8">
+                <div class="col-12 col-sm-6 col-md-6 col-lg-6">
                     <nav class="navbar navbar-light bg-light mb-5">
                         <div class="container-fluid">
                             <button class="btn btn-outline-primary" id="button-user-add"><i class="bi bi-person-plus-fill"></i></button>
+                            <button class="btn btn-outline-primary" id="button-user-search"><i class="bi bi-search"></i></button>
+                            <div class="d-none" id="button-user-view"></div>
+                            <div class="d-none" id="button-user-edit"></div>
+                            
                         </div> 
                     </nav>
                     
@@ -37,20 +42,74 @@
                         <div class="mb-3">
                             <label for="birthdate" class="form-label">Дата рождения</label>
                             <input id="birthdate" type="text" class="form-control" placeholder="DD.MM.YYYY">
-                        </div> 
+                        </div>
+                        <div class="mb-3">
+                            <label for="managerSelect" class="form-label">Менеджер</label>
+                            <select id="managerSelect" class="form-select"></select>
+                        </div>
                         <button class="btn btn-success" type="submit"><i class="bi bi-person-plus-fill"></i> Добавить</button>
                         </form>
                     </div>
+
+                    <div id="widget-user-view" class="p-4 border rounded d-none"> 
+                        <h4 id="widget-userview-title"></h4>
+                        <div class="row" id="widget-userview-list"></div>
+                    </div>
+
+                    <div id="widget-user-edit" class="p-4 border rounded d-none"> 
+                        <form id="form-user-edit">
+                        <h4 id="widget-useredit-title">Редактировать сотрудника</h4>
+                        <input id="edit-id" type="hidden" value="">
+                        <div class="mb-3">
+                            <label for="edit-name" class="form-label">Имя</label>
+                            <input id="edit-name" type="text" class="form-control" placeholder="Имя">
+                        </div>
+                        <div class="mb-3">
+                            <label for="edit-surname" class="form-label">Фамилия</label>
+                            <input id="edit-surname" type="text" class="form-control" placeholder="Фамилия">
+                        </div>
+                        <div class="mb-3">
+                            <label for="edit-birthdate" class="form-label">Дата рождения</label>
+                            <input id="edit-birthdate" type="text" class="form-control" placeholder="DD.MM.YYYY">
+                        </div>
+                        <div class="mb-3">
+                            <label for="edit-managerSelect" class="form-label">Менеджер</label>
+                            <select id="edit-managerSelect" class="form-select"></select>
+                        </div>
+                        <button class="btn btn-success" type="submit"><i class="bi bi-person-plus-fill"></i> Сохранить</button>
+                        </form>
+                    </div>
+
+                    <div id="widget-user-search" class="p-4 border rounded d-none">
+                        <form id="form-user-search">
+                        <h4>Искать сотрудника</h4>
+                        <div class="mb-3">
+                            <label for="search-name" class="form-label">Имя</label>
+                            <input id="search-name" type="text" class="form-control" placeholder="Имя">
+                        </div>
+                        <div class="mb-3">
+                            <label for="search-surname" class="form-label">Фамилия</label>
+                            <input id="search-surname" type="text" class="form-control" placeholder="Фамилия">
+                        </div> 
+                        <div class="mb-3">
+                            <label for="search-managerSelect" class="form-label">Менеджер</label>
+                            <select id="search-managerSelect" class="form-select"></select>
+                        </div>
+                        <button class="btn btn-success" type="submit"><i class="bi bi-search"></i> Найти</button>
+                        <button class="btn btn-warning" type="reset">Очистить</button>
+                        </form>
+                    </div>
+
                 </div>
             </div>
         </div>          
     </main>
 
     <script src="employees-json.js"></script>
-    <script src="service.js"></script>
+    <script src="service.js?1"></script>
     <script src="moment.min.js"></script>
     <script src="moment.locale.ru.js"></script>
-    <script src="ui.js"></script>
+    <script src="ui.js?1"></script>
 
     <script>
         console.log (DATA);

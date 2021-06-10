@@ -1,0 +1,55 @@
+.employees 
+    &--item
+        position: relative
+        cursor: pointer
+        &-edit
+            position: absolute
+            right: 40px
+            top: 5px
+            visibility: hidden
+        &-delete
+            position: absolute
+            right: 5px
+            top: 5px
+            visibility: hidden
+        &:hover
+            background: #eee
+        &:hover &-edit, &:hover &-delete
+            visibility: visible
+        &-select
+            position: absolute
+            top: 5px
+            right: 75px
+            width: 150px
+            padding-top: .125rem
+            padding-bottom: .125rem
+            padding-left: .125rem
+            padding-right: 1.25rem
+            font-size: .7rem
+            height: 31px
+            background-position: right .5rem center
+            background-size: 10px 8px
+            visibility: hidden
+        &-manager
+            display: block
+            position: absolute
+            right: 75px
+            height: 38px
+            width: 150px
+            top: 5px
+            line-height: 40px
+            overflow: hidden
+            font-size: .7rem
+        &:hover &-select
+            visibility: visible
+        &-manager::before
+            content: 'менеджер:'
+            display: block
+            position: absolute
+            font-size: .6rem
+            top: -0.85rem
+            left: 0px
+.navbar > .container-fluid
+    justify-content: left
+    & .btn 
+        margin-right: 5px

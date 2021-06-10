@@ -2,7 +2,7 @@
 function findByName (name, surname)
 {
     let results = []; 
-    for (var employee of DATA.employees)
+    for (let employee of DATA.employees)
     {
         if ((!name || employee.name.toUpperCase() === name.toUpperCase()) && (!surname || employee.surname.toUpperCase() === surname.toUpperCase()))
         {
@@ -16,7 +16,7 @@ function findByName (name, surname)
 function findByNameID (name, surname)
 {
     let results = []; 
-    for (var employee of DATA.employees)
+    for (let employee of DATA.employees)
     {
         if ((!name || employee.name.toUpperCase() === name.toUpperCase()) && (!surname || employee.surname.toUpperCase() === surname.toUpperCase()))
         {
@@ -25,21 +25,20 @@ function findByNameID (name, surname)
     } 
     return results;
 }
-
-// Кэш найденных
-const employeeMap = {};
+ 
 // поиск по ID, результат объект employee / false
-function findByID (id)
+function findByID (id, showconsole = false)
 {
-    if (!id || !isNumber(id)) throw "Для поиска по ID должен быть числом";
+    if (!id || !isNumber(id)) throw "Для поиска по ID должен быть числом"; 
 
-    if (employeeMap[id]) return employeeMap[id];
+    if (showconsole) console.log ('findByID '+id);
 
-    for (var employee of DATA.employees)
+    for (let employee of DATA.employees)
     {
+        if (showconsole) console.log ('findByID curid='+employee.id);
+        
         if (employee.id === id)
         {
-            employeeMap[id] = employee;
             return employee;
         }
     } 
@@ -50,7 +49,7 @@ function findByID (id)
 function findByPartName (name)
 {
     let results = []; 
-    for (var employee of DATA.employees)
+    for (let employee of DATA.employees)
     {
         if (!name || employee.name.toUpperCase().indexOf(name.toUpperCase())>=0 || employee.surname.toUpperCase().indexOf(name.toUpperCase())>=0)
         {
@@ -58,6 +57,19 @@ function findByPartName (name)
         }
     } 
     return results;
+}
+
+// поиск по имени / фамилии / манагеру
+function searchEmployees (name, surname, managerRef)
+{ 
+    let results = []; 
+    for (let employee of DATA.employees) 
+    { 
+        if ((!name || employee.name.toUpperCase() === name.toUpperCase()) && (!surname || employee.surname.toUpperCase() === surname.toUpperCase()) && (!managerRef || employee.managerRef==managerRef)) { 
+            results.push(employee); 
+        } 
+    } 
+    return results; 
 }
 
 //Добавление сотрудника, throw при пустом имени/фамилии, департамент необязательный параметр, результат ID добавленного сотрудника
@@ -93,16 +105,17 @@ function DeleteEmployeeByID (id)
 { 
     if (!id || !isNumber(id)) throw "ID для удаления должен быть числом";
     
-    let position = null;
+    let position = 0;
     for (var employee of DATA.employees)
     {
         if (employee.id === id) break;
         position++;
     }
-    
-    if (position) 
+    console.log (position);
+
+    if (position >= 0) 
     {
-        DATA.employees.splice(position, 1);
+        DATA.employees.splice (position, 1);
         return position; 
     }
     else return false; 
@@ -173,6 +186,13 @@ function setDateOfBirth (id, dateOfBirth)
 {
     let employee = findByID (id);
     employee.dateOfBirth = dateOfBirth;
+}
+
+// установить менеджера
+function setEmployeeManager (id, managerId)
+{
+    let employee = findByID (id);
+    employee.managerRef = managerId;
 }
 
 // получить возраст
