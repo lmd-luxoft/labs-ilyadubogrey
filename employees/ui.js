@@ -1,6 +1,8 @@
 import { DATA } from './employees-json.js';
-import {DeleteEmployeeByID, setEmployeeManager, searchEmployees, addEmployee, setDateOfBirth, findByID, showEmployeesConsole} from './service.js'
+import {DeleteEmployeeByID, setEmployeeManager, searchEmployees, addEmployee, setDateOfBirth, findByID, showEmployeesConsole, formatDate, getAge} from './service.js'
 import moment from 'moment';
+
+moment.locale('ru');
 
 const PLACEHOLDER = 'employeesPlaceholder'; // плейсхолдер список сотрудников 
 
