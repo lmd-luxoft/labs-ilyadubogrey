@@ -4,5 +4,11 @@ module.exports =
     devtool: 'source-map',
     output: {
         filename: './bundle.js'
-    }
+    },
+    plugins: [
+        new webpack.ProvidePlugin({
+            moment : 'moment'
+        })
+    ]
 };
+

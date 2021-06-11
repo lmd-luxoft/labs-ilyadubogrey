@@ -1,6 +1,6 @@
 import { DATA } from './employees-json.js';
-import {DeleteEmployeeByID, setEmployeeManager, searchEmployees, addEmployee, setDateOfBirth, findByID} from './service.js'
-import { moment } from 'moment';
+import {DeleteEmployeeByID, setEmployeeManager, searchEmployees, addEmployee, setDateOfBirth, findByID, showEmployeesConsole} from './service.js'
+import moment from 'moment';
 
 const PLACEHOLDER = 'employeesPlaceholder'; // плейсхолдер список сотрудников 
 

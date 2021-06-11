@@ -1,5 +1,5 @@
 import { DATA } from './employees-json.js';
-import { moment } from 'moment';
+import moment from 'moment';
 
 // поиск по имени, результат массив объектов employee
 export function findByName (name, surname)
