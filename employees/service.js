@@ -1,7 +1,8 @@
 import { DATA } from './employees-json.js';
 import moment from 'moment';
 
-moment.locale('ru');
+moment.locale('ru'); 
+//
 
 // поиск по имени, результат массив объектов employee
 export function findByName (name, surname)
