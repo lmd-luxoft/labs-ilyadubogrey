@@ -1,5 +1,8 @@
+import { DATA } from './employees-json.js';
+import { moment } from 'moment';
+
 // поиск по имени, результат массив объектов employee
-function findByName (name, surname)
+export function findByName (name, surname)
 {
     let results = []; 
     for (let employee of DATA.employees)
@@ -13,7 +16,7 @@ function findByName (name, surname)
 }
 
 // поиск по имени, результат массив ID employee
-function findByNameID (name, surname)
+export function findByNameID (name, surname)
 {
     let results = []; 
     for (let employee of DATA.employees)
@@ -27,7 +30,7 @@ function findByNameID (name, surname)
 }
  
 // поиск по ID, результат объект employee / false
-function findByID (id, showconsole = false)
+export function findByID (id, showconsole = false)
 {
     if (!id || !isNumber(id)) throw "Для поиска по ID должен быть числом"; 
 
@@ -46,7 +49,7 @@ function findByID (id, showconsole = false)
 }
 
 // поиск по имени, результат массив объектов employee
-function findByPartName (name)
+export function findByPartName (name)
 {
     let results = []; 
     for (let employee of DATA.employees)
@@ -60,7 +63,7 @@ function findByPartName (name)
 }
 
 // поиск по имени / фамилии / манагеру
-function searchEmployees (name, surname, managerRef)
+export function searchEmployees (name, surname, managerRef)
 { 
     let results = []; 
     for (let employee of DATA.employees) 
@@ -73,7 +76,7 @@ function searchEmployees (name, surname, managerRef)
 }
 
 //Добавление сотрудника, throw при пустом имени/фамилии, департамент необязательный параметр, результат ID добавленного сотрудника
-function addEmployee (name, surname, department='')
+export function addEmployee (name, surname, department='')
 {
     let maxID = 0, curID = null;
 
@@ -94,14 +97,14 @@ function addEmployee (name, surname, department='')
 }
 
 // проверка на число
-function isNumber (value)
+export function isNumber (value)
 {
     if (!parseInt(value)) return false; 
     else return true;
 }
 
 //Удаление сотрудника по ID, возврат position при успехе, false если не найден
-function DeleteEmployeeByID (id)
+export function DeleteEmployeeByID (id)
 { 
     if (!id || !isNumber(id)) throw "ID для удаления должен быть числом";
     
@@ -122,7 +125,7 @@ function DeleteEmployeeByID (id)
 }
 
 // отобразить сотрудника по ID или переданный объект
-function showEmployee (employee) 
+export function showEmployee (employee) 
 {
     let result = '', fields;
 
@@ -151,7 +154,7 @@ function showEmployee (employee)
 }
 
 // Отобразить всех сотрудников
-function showEmployeesConsole() 
+export function showEmployeesConsole() 
 {
     for (var employee of DATA.employees)
     {
@@ -160,7 +163,7 @@ function showEmployeesConsole()
 }
 
 // Добавить телефон сотруднику, проверка на дубликат
-function addPhone (id, phone) 
+export function addPhone (id, phone) 
 {
     let employee = findByID (id);
     let phones = employee.phones;
@@ -182,21 +185,21 @@ function addPhone (id, phone)
 }
 
 // Добавить Дату рождения
-function setDateOfBirth (id, dateOfBirth) 
+export function setDateOfBirth (id, dateOfBirth) 
 {
     let employee = findByID (id);
     employee.dateOfBirth = dateOfBirth;
 }
 
 // установить менеджера
-function setEmployeeManager (id, managerId)
+export function setEmployeeManager (id, managerId)
 {
     let employee = findByID (id);
     employee.managerRef = managerId;
 }
 
 // получить возраст
-function getAge (id) 
+export function getAge (id) 
 {
     let employee = findByID (id);
     if (!employee.dateOfBirth) throw "Нет даты рождения у сотрудника";
@@ -209,13 +212,13 @@ function getAge (id)
 }
 
 //форматирование вывода даты
-function formatDate (date)
+export function formatDate (date)
 {
     return moment (date).format("DD MMMM YYYY")+' г.';
 }
 
 // получить строку отформатированную с данными сотрудника
-function getEmployeeInfo (id) 
+export function getEmployeeInfo (id) 
 {
     let employee = findByID (id);
 
@@ -226,14 +229,14 @@ function getEmployeeInfo (id)
 }
 
 // получить JSON строку сотрудника
-function getEmployeeJSON (id) 
+export function getEmployeeJSON (id) 
 {
     let employee = findByID (id);
     return JSON.stringify (employee);
 }
 
 // тестирование функционала
-function testEmployee ()
+export function testEmployee ()
 {
     let newID = addEmployee ("Петров", "Баширов", "KGB");
     addPhone (newID, "+79780792208");

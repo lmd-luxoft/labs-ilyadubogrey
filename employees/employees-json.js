@@ -1,4 +1,4 @@
-const DATA = {
+export const DATA = {
     employees: [
         {id: 1, name: "Пафнутий", surname: "Пафнутьев", department: "IT", managerRef: 2},
         {id: 2, name: "Арсений", surname: "Иванов", department: "IT"},

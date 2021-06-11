@@ -1,3 +1,6 @@
+import {DeleteEmployeeByID, setEmployeeManager, searchEmployees, addEmployee, setDateOfBirth} from './service.js'
+import { moment } from 'moment';
+
 const PLACEHOLDER = 'employeesPlaceholder'; // плейсхолдер список сотрудников 
 
 const tool_buttons = Array('button-user-add', 'button-user-view', 'button-user-edit', 'button-user-search');
@@ -438,7 +441,7 @@ document.getElementById("form-user-search").addEventListener('reset', function (
 });
 
 // инициализирующая функция
-function runUI()
+export function runUI()
 {
     showEmployees(DATA.employees);
 }
